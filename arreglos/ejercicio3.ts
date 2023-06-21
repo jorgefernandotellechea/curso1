@@ -1,0 +1,36 @@
+/* ordena los productos por precio de forma descendente.
+filtra los productos que están en la categoría "Electronics".
+crea un nuevo arreglo que contenga objetos con el nombre del producto y el valor total del stock
+(precio por cantidad en stock) para cada producto filtrado.
+Imprime en la consola el nombre de cada producto y su valor total del stock. */
+
+const products = [
+  { id: 1, name: 'iPhone 12', category: 'Electronics', price: 999.99, stock: 10 },
+  { id: 2, name: 'AirPods Pro', category: 'Electronics', price: 249.99, stock: 5 },
+  { id: 3, name: 'Samsung Galaxy S21', category: 'Electronics', price: 899.99, stock: 8 },
+  { id: 4, name: 'Nike Air Max', category: 'Shoes', price: 129.99, stock: 15 },
+  { id: 5, name: 'Sony PlayStation 5', category: 'Gaming', price: 499.99, stock: 3 },
+];
+
+const precioDescendente = products.sort((a,b) => {
+	let item1 = a.price;
+	let item2 = b.price;
+	if ( item1 < item2 ) {
+		return 1;
+	} else if ( item1 > item2 ) {
+		return -1;
+	} else { 
+			return 0;
+	}
+});
+console.log(precioDescendente);
+
+const electronics = products.filter((products) => {
+	return (products.category == 'Electronics');
+});
+console.log(electronics);
+
+const precioTotalStock = electronics.map((item) => {
+	return { Item: `${item.name}`, ValorStock: `${item.price*item.stock}`};
+});
+console.log(precioTotalStock);
